@@ -1,0 +1,13 @@
+[package]
+name = "delta-wrecker"
+version = "0.1.0"
+edition = "2021"
+description = "A Rust library for orbital mechanics calculations"
+license = "MIT"
+authors = ["fred-machuga"]
+
+[lib]
+name = "delta_wrecker"
+path = "src/lib.rs"
+
+[dependencies]
