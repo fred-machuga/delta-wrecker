@@ -7,4 +7,5 @@ requires-python = ">=3.10"
 dependencies = [
     "pygame>=2.6.1",
     "pytest>=7.0.0",
+    "maturin>=1.7.0"
 ]

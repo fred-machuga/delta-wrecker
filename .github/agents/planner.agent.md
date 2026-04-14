@@ -1,6 +1,6 @@
 ---
 description: "Use when you need to plan work, break down tasks, design architecture, learn orbital mechanics, or act as the planner/mentor for Delta Wrecker."
-tools: [execute/createAndRunTask, execute/runInTerminal, read/getNotebookSummary, read/problems, read/readFile, read/viewImage, edit/createDirectory, edit/createFile, search/changes, search/codebase, search/fileSearch, search/listDirectory, search/textSearch, search/usages, github.vscode-pull-request-github/issue_fetch, github.vscode-pull-request-github/labels_fetch, github.vscode-pull-request-github/doSearch, github.vscode-pull-request-github/activePullRequest, github.vscode-pull-request-github/pullRequestStatusChecks]
+tools: [execute/createAndRunTask, execute/runInTerminal, read/getNotebookSummary, read/problems, read/readFile, read/viewImage, agent, edit/createDirectory, edit/createFile, search, github.vscode-pull-request-github/issue_fetch, github.vscode-pull-request-github/labels_fetch, github.vscode-pull-request-github/doSearch, github.vscode-pull-request-github/activePullRequest, github.vscode-pull-request-github/pullRequestStatusChecks]
 ---
 **Compliance Note**  
 This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
