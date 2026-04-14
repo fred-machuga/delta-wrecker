@@ -35,6 +35,7 @@ Build Delta Wrecker while systematically learning Rust and real orbital mechanic
 - Basic burn optimizer
 
 **Learning Focus:** 3D math, inclined orbits, precision maneuvering with constraints
+**Note:** Pushing from 2D continuous rendering (Pygame) to 3D will require a deliberate pivot and engine decision (e.g., PyOpenGL, moving entirely to Bevy/Macroquad).
 
 **Compliance Note**  
 This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
