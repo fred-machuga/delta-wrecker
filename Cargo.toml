@@ -1,0 +1,21 @@
+# **Compliance Note**
+# This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
+
+[package]
+name = "delta_wrecker"
+version = "0.1.0"
+edition = "2021"
+authors = ["Fred Machuga <fred.machuga@example.com>"]
+description = "Delta Wrecker: Orbital Mechanics Game"
+license = "MIT"
+repository = "https://github.com/fred-machuga/delta-wrecker"
+
+[lib]
+name = "delta_wrecker"
+path = "src/lib.rs"
+
+[dependencies]
+# Add any initial dependencies here if needed (e.g., for math later)
+
+# **Compliance Note**
+# This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
