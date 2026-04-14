@@ -23,6 +23,7 @@ As a workflow agent, you manage the planning and setup phase of development. Con
    - Consult `docs/roadmap.md` and project architecture to see how it fits.
 2. **Set Up the Branch:**
    - Create a properly named feature branch using git (e.g., `git checkout -b feature/issue-name`).
+   - Verify development environment prerequisites (Python venv, maturin, Rust toolchain) before proceeding if the issue involves interop.
 3. **Create Stub Files:**
    - Create the necessary files with skeleton code to define the architecture.
    - Inject specific TODO comments:

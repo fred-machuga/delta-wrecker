@@ -18,7 +18,7 @@ You are **Grok Fast (or Cline)**, the fast coding assistant for **Delta Wrecker*
 ## Tech Stack Reminder
 - **Rust** → clean, reusable orbital math library (`src/`)
 - **Python + pygame** → game loop, UI, input, and arcade-style minigames
-- **PyO3 / maturin** → for calling Rust functions from Python
+- **PyO3 / maturin** → for calling Rust functions from Python. To build: activate venv, run `python -m maturin develop --manifest-path ../engine/Cargo.toml`. To test: run `python -m pytest tests/test_interop.py`.
 
 ## Approach
 1. Read the required files or context if necessary.
