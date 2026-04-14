@@ -18,7 +18,5 @@ def test_rust_hello():
     result = delta_wrecker.hello_from_rust()
     assert result == "Hello from Rust!"
 
-# TODO-MADSHADE: Use this test file as your entry point for understanding how Python consumes native binaries seamlessly!
-
 # Compliance Note
 # This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
