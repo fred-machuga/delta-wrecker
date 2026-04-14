@@ -3,51 +3,25 @@ This project is based entirely on publicly available academic information and ge
 
 # Requirements
 
-## Functional Requirements
+## Core Requirements
 
-The game **MUST**:
-- Allow the player to control an orbital tug using real orbital mechanics
-- Require the player to calculate and execute burns to intercept stranded satellites or debris
-- Support establishing a perch orbit before closing distance
-- Include a fun, arcade-style grappling minigame once the tug is within three sigma of the target
-- Allow the player to tow the payload to either a graveyard orbit or a repair station
-- Enforce realistic thrust limits when towing (especially with attached mass)
-- Progress through three distinct phases with increasing orbital complexity
+1. The orbital mechanics library **must** provide bidirectional conversion between Cartesian state vectors (position and velocity) and Keplerian orbital elements.
 
-## Phase Requirements
+2. The game **must** maintain a stable 60 FPS during Phase 1 gameplay.
 
-**Phase 1 (Near-Circular Operations) MUST:**
-- Use only very low eccentricity orbits (e < 0.05)
-- Support basic Hohmann-style transfers
-- Use simple instantaneous burns
-- Not require full Kepler’s equation
+3. The game **must** implement a 2D top-down view for all of Phase 1.
 
-**Phase 2 (Eccentric Operations) MUST:**
-- Support higher eccentricity orbits
-- Implement and use a full Kepler’s equation solver
-- Include COLA detection and warnings
+4. The project **must** maintain a clear architectural separation between the reusable Rust orbital math library and the game-specific code.
 
-**Phase 3 (Inclined Operations) MUST:**
-- Support inclination (transition to 3D view)
-- Handle towing with attached mass and strict thrust limits
-- Include advanced COLA analysis
+5. All core orbital math functions **must** have unit tests using known reference values.
 
-## Technical Requirements
+6. The game **must** implement a complete gameplay loop consisting of intercept, grapple, and towing phases.
 
-The Rust orbital library **MUST**:
-- Be clean and written in functional style
-- Provide PyO3 bindings for use from Python
-- Support orbit propagation for both circular and eccentric orbits
-- Include Kepler’s equation solver
-- Be designed as a reusable crate
+7. The project **must** include clear build instructions so that any developer can clone and run the project with `cargo run`.
 
-## Non-Functional Requirements
+8. The game **must** include a save/load system so that player progress is not lost between sessions.
 
-The project **MUST**:
-- Be visually engaging and fun to play (not just blinking dots)
-- Include the compliance note at the top and bottom of every markdown and source file
-- Follow clean architecture with clear separation between Rust (math) and Python (game/UI)
-- Be suitable for demonstrating Rust and orbital mechanics skills
+9. The orbital library **must** include sufficient logging and debug output to allow easy verification of orbital calculations during development.
 
 **Compliance Note**  
 This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
