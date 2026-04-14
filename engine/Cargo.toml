@@ -12,7 +12,9 @@ repository = "https://github.com/fred-machuga/delta-wrecker"
 
 [lib]
 name = "delta_wrecker"
-path = "src/lib.rs"
+
+[[bin]]
+name = "delta_wrecker"
 
 [dependencies]
 # Add any initial dependencies here if needed (e.g., for math later)
