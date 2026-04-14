@@ -1,7 +1,7 @@
 **Compliance Note**  
 This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
 
-# ABOUT_ME.md
+# About Me
 
 I am a 30-year software engineer with a strong preference for functional programming.
 
