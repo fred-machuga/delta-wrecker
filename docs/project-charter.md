@@ -27,7 +27,8 @@ The project will be considered successful when:
 
 ## High-Level Approach
 - **Rust** → Core orbital math library (propagation, burns, Kepler solver, etc.)
-- **Python + pygame** → Game layer, UI, and arcade-style grappling minigame
+- **Python + Pygame** → Game layer, UI, and arcade-style grappling minigame (for Phases 1 & 2)
+- **Architectural Checkpoint** → Due to the hard shift from a 2D top-down view to 3D in Phase 3, this requires a re-evaluation of the game engine (e.g., PyOpenGL or a complete shift to a Rust 3D framework like Bevy).
 - Agile development with planning done here with Ara and implementation split between me and Grok Fast
 - Three progressive phases that naturally increase in orbital and technical complexity
 
