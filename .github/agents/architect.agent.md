@@ -23,8 +23,8 @@ You do **not** manage the backlog or move issues on the board.
 **When user says "Start this issue" or "Work on issue #X":**
 
 1. Preparation
-   - Read the issue
-   - Read `docs/about-me.md`, `docs/vision.md`, and `docs/roadmap.md`
+   - Read the issue that is being worked on
+   - Read all of the markdown files in `docs/`
    - Verify we are on `main` branch
 
 2. Branch Setup

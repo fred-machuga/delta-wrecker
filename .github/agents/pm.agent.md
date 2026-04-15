@@ -23,7 +23,7 @@ When the user says "Start this issue", "Work on issue #X", or "Create stories fr
 
 1. **Preparation**
    - Read the issue thoroughly
-   - Read `docs/about-me.md`, `docs/vision.md`, and `docs/roadmap.md`
+   - Read all of the mardown down files in `docs/`
    - Verify we are on the `main` branch
 
 2. **Create / Update Issues**
