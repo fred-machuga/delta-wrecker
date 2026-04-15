@@ -1,0 +1,39 @@
+﻿{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Rust: cargo test",
+            "type": "cargo",
+            "command": "test",
+            "args": [
+                "--manifest-path=engine/Cargo.toml"
+            ],
+            "group": "test",
+            "presentation": {
+                "clear": true
+            }
+        },
+        {
+            "label": "Python: pytest",
+            "type": "shell",
+            "command": "${workspaceFolder}/game/.venv/Scripts/python.exe",
+            "args": [
+                "-m",
+                "pytest",
+                "game/tests"
+            ],
+            "group": "test",
+            "presentation": {
+                "clear": true
+            }
+        },
+        {
+            "label": "Run All Tests",
+            "dependsOn": ["Rust: cargo test", "Python: pytest"],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}

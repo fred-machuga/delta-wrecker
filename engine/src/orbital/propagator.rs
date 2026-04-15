@@ -12,23 +12,26 @@ use super::OrbitState;
 /// 
 /// Note: Pure time-based propagation. Given the initial state and Δt, 
 /// computes new position + velocity for a stable near-circular orbit.
-pub fn propagate_circular(state: &OrbitState, dt_s: f64) -> OrbitState {
-    // TODO-Fred: Implement pure time-based propagation.
+pub fn propagate(state: &OrbitState, dt_s: f64) -> OrbitState {
     // - Matches analytical circular orbit math within 1e-6 error
     // - Frame-rate independent
     
-    // Placeholder returning the same state
-    *state
-}
+    let r = state.distance_km(); // distance from center of Earth to the orbiting body
+    let v: f64 = state.speed_km_s(); // speed of the orbiting body in km/s
+    let omega = v / r; // angular velocity of the orbiting body in rad/s
+    let theta = omega * dt_s; // number of radians the spacecraft moves along its circular orbit over dt_s seconds
+    let cos_theta = theta.cos(); 
+    let sin_theta = theta.sin();
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::orbital::Vec3;
+    let x = state.position().x * cos_theta - state.position().y * sin_theta;
+    let y = state.position().x * sin_theta + state.position().y * cos_theta;
+    let z = state.position().z;
+    
+    let vx = -v * y / r;
+    let vy = v * x / r;
+    let vz = state.velocity().z;
 
-    // TODO-Coder: Write comprehensive unit tests for propagate_circular.
-    // - Matches analytical circular orbit math within 1e-6 error
-    // - 100% branch test coverage
+    OrbitState::new(x, y, z, vx, vy, vz)
 }
 
 // **Compliance Note**
