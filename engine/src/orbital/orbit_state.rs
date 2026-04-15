@@ -57,6 +57,13 @@ impl OrbitState {
         self.position().magnitude()
     }
 
+    /// Propagates the orbit state forward by `dt_s` seconds using the
+    /// propagator defined in `super::propagate`.
+    pub fn propagate(&self, dt_s: f64) -> OrbitState {
+        super::propagate(self, dt_s)
+    }
+
+
 }
 
 // **Compliance Note**
