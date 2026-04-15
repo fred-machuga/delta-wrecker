@@ -70,6 +70,12 @@ fn test_keplerian_elements_debug_clone_copy() {
 }
 
 #[test]
+fn test_near_circular_validation() {
+    // TODO-Fred: Implement unit tests for checking near-circular (e < 0.05) orbit scenarios
+    // Ensure 100% branch coverage for this logic.
+}
+
+#[test]
 fn test_vec3_debug_clone_copy() {
     let v1 = Vec3::new(1.0, 2.0, 3.0);
     let v2 = v1; // Copy

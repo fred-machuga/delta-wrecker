@@ -49,6 +49,14 @@ impl KeplerianElements {
             mean_anomaly: None,
         }
     }
+
+    /// Validates that the orbit is near-circular (e < 0.05).
+    /// Returns true if valid, false otherwise.
+    pub fn is_near_circular(&self) -> bool {
+        // TODO-Fred: Implement near-circular validation logic (e < 0.05)
+        // Remember to handle the Option<f64> correctly.
+        unimplemented!()
+    }
 }
 
 // **Compliance Note**
