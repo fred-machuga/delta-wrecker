@@ -6,21 +6,19 @@ import delta_wrecker
 
 def test_propagator_init():
     # TODO-Coder: Test instantiating the propagator via PyO3
-    prop = delta_wrecker.PyPropagator(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0, 0.0)
+    prop = delta_wrecker.PyOrbitState(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0, 0.0)
     assert prop is not None
 
 def test_propagator_step():
     # TODO-Coder: Test the step(dt) method
-    prop = delta_wrecker.PyPropagator(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0, 0.0)
-    prop.step(10.0)
-    state = prop.state
-    assert state.time == 10.0
+    prop = delta_wrecker.PyOrbitState(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0, 0.0)
+    next_state = prop.propagate(10.0)
+    assert next_state.time == 10.0
 
 def test_propagator_state_dataclass():
     # TODO-Coder: Test that we can read the current ship state as a clean Python dataclass
     # (pos, vel, time, orbital elements)
-    prop = delta_wrecker.PyPropagator(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0, 0.0)
-    state = prop.state
+    state = delta_wrecker.PyOrbitState(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0, 0.0)
     
     assert hasattr(state, "pos")
     assert hasattr(state, "vel")
