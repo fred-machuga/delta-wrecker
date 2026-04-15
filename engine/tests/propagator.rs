@@ -153,5 +153,88 @@ fn test_frame_rate_independence() {
     assert!((single_step.vy - multi_step.vy).abs() < 1e-6);
     assert!((single_step.vz - multi_step.vz).abs() < 1e-6);
 }
+
+#[test]
+fn test_velocity_perpendicular_to_position() {
+    // Test that after propagation, the velocity vector remains roughly perpendicular to the position vector
+    // - Compute dot product of position and velocity vectors
+    // - Assert dot product is close to zero (within tolerance, e.g., 1e-6)
+    let r = 7000.0;
+    let v = 7.546;
+    let state = OrbitState::new(r, 0.0, 0.0, 0.0, v, 0.0);
+    let new_state = propagate(&state, 1.0); // Propagate by 1 second
+    let pos = new_state.position();
+    let vel = new_state.velocity();
+    let dot_product = pos.x * vel.x + pos.y * vel.y + pos.z * vel.z;
+    assert!(dot_product.abs() < 1e-6);
+}
+
+#[test]
+fn test_altitude_stability_over_multiple_steps() {
+    // Test that altitude stays roughly stable after multiple propagation steps
+    // - Propagate over several steps (e.g., 100 small steps)
+    // - Compute altitude at each step
+    // - Assert that altitude variation is minimal (doesn't spiral in or out, within tolerance)
+    let r = 7000.0;
+    let v = 7.546;
+    let mut state = OrbitState::new(r, 0.0, 0.0, 0.0, v, 0.0);
+    let initial_alt = state.altitude_km();
+    let dt = 1.0;
+    for _ in 0..100 {
+        state = propagate(&state, dt);
+        let alt = state.altitude_km();
+        assert!((alt - initial_alt).abs() < 0.01); // Very tight tolerance for stability
+    }
+}
+
+#[test]
+fn test_realistic_iss_like_orbit() {
+    // Test using a realistic circular orbit (~6778 km radius / ~400 km altitude, like ISS)
+    // - Use approximate ISS orbital parameters: radius ~6778 km, velocity ~7.66 km/s
+    // - Propagate over one orbital period
+    // - Assert final state matches initial state within tolerance
+    let r = 6778.0; // km
+    let v = 7.66; // km/s
+    let state = OrbitState::new(r, 0.0, 0.0, 0.0, v, 0.0);
+    let omega = v / r;
+    let period = 2.0 * PI / omega;
+    let new_state = propagate(&state, period);
+    // Should return to initial state
+    assert!((new_state.x - r).abs() < 1e-3);
+    assert!((new_state.y - 0.0).abs() < 1e-3);
+    assert!((new_state.z - 0.0).abs() < 1e-3);
+    assert!((new_state.vx - 0.0).abs() < 1e-3);
+    assert!((new_state.vy - v).abs() < 1e-3);
+    assert!((new_state.vz - 0.0).abs() < 1e-3);
+}
+
+#[test]
+fn test_small_vs_large_dt_consistency() {
+    // Test that propagating with a very small dt_s vs a larger dt_s produces reasonably similar results
+    // - Choose a total time interval
+    // - Propagate with small dt (many steps) and large dt (few steps)
+    // - Compare final states
+    // - Assert positions and velocities match within tolerance
+    let r = 7000.0;
+    let v = 7.546;
+    let state = OrbitState::new(r, 0.0, 0.0, 0.0, v, 0.0);
+    let total_time = 10.0; // seconds
+    // Small dt: 100 steps
+    let mut small_step = state;
+    let small_dt = total_time / 100.0;
+    for _ in 0..100 {
+        small_step = propagate(&small_step, small_dt);
+    }
+    // Large dt: 1 step
+    let large_step = propagate(&state, total_time);
+    // Compare
+    assert!((small_step.x - large_step.x).abs() < 1e-4);
+    assert!((small_step.y - large_step.y).abs() < 1e-4);
+    assert!((small_step.z - large_step.z).abs() < 1e-4);
+    assert!((small_step.vx - large_step.vx).abs() < 1e-4);
+    assert!((small_step.vy - large_step.vy).abs() < 1e-4);
+    assert!((small_step.vz - large_step.vz).abs() < 1e-4);
+}
+
 // **Compliance Note**
 // This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
