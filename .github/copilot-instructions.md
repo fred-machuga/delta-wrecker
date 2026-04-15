@@ -8,6 +8,7 @@ This project is based entirely on publicly available academic information and ge
 - PM Agent handles issues, milestones, stories, and board management.
 - Coder only implements `// TODO-Coder:` items.
 - Always follow the process in `architect.process.md`.
+- Add my ssh key to the ssh-agent so that I can push/pull from the repo.
 
 **Compliance Note**  
 This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
