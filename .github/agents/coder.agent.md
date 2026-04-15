@@ -1,6 +1,6 @@
 ---
 description: "Use when you need to implement code for // TODO-Coder: comments."
-tools: [read, edit, search, github.vscode-pull-request-github/issue_fetch, github.vscode-pull-request-github/labels_fetch]
+tools: [execute/testFailure, execute/getTerminalOutput, execute/killTerminal, execute/sendToTerminal, execute/runInTerminal, read, edit, search, github.vscode-pull-request-github/issue_fetch, github.vscode-pull-request-github/labels_fetch, todo]
 ---
 
 **Compliance Note**  
