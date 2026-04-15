@@ -1,7 +1,7 @@
 // **Compliance Note**
 // This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
 
-use delta_wrecker::orbital::{OrbitState, KeplerianElements, Vec3, MU_EARTH};
+use delta_wrecker::orbital::{OrbitState, KeplerianElements, Vec3, MU_EARTH, EARTH_RADIUS_KM};
 
 #[test]
 fn test_vec3_creation() {
@@ -9,6 +9,17 @@ fn test_vec3_creation() {
     assert_eq!(v.x, 1.0);
     assert_eq!(v.y, 2.0);
     assert_eq!(v.z, 3.0);
+}
+
+#[test]
+fn test_vec3_magnitude() {
+    // 3-4-5 triangle
+    let v = Vec3::new(3.0, 4.0, 0.0);
+    assert_eq!(v.magnitude(), 5.0);
+
+    // 1-2-2 vector gives a length of 3 (sqrt(1+4+4)=sqrt(9)=3)
+    let v2 = Vec3::new(1.0, 2.0, 2.0);
+    assert_eq!(v2.magnitude(), 3.0);
 }
 
 #[test]
@@ -23,17 +34,32 @@ fn test_orbit_state_creation() {
 }
 
 #[test]
-fn test_orbit_state_get_position() {
+fn test_orbit_state_position() {
     let state = OrbitState::new(7000.0, 1000.0, 2000.0, 0.0, 7.5, 1.2);
-    let pos = state.get_position();
+    let pos = state.position();
     assert_eq!(pos, Vec3::new(7000.0, 1000.0, 2000.0));
 }
 
 #[test]
-fn test_orbit_state_get_velocity() {
+fn test_orbit_state_velocity() {
     let state = OrbitState::new(7000.0, 1000.0, 2000.0, 0.0, 7.5, 1.2);
-    let vel = state.get_velocity();
+    let vel = state.velocity();
     assert_eq!(vel, Vec3::new(0.0, 7.5, 1.2));
+}
+
+#[test]
+fn test_orbit_state_derived_metrics() {
+    // 7000 km distance on X axis. Velocity 7.5 km/s on Y axis.
+    let state = OrbitState::new(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0);
+    
+    // distance = sqrt(7000^2 + 0^2 + 0^2) = 7000.0
+    assert_eq!(state.distance_km(), 7000.0);
+    
+    // altitude = 7000.0 - 6371.0 = 629.0
+    assert_eq!(state.altitude_km(), 629.0);
+    
+    // speed = sqrt(0^2 + 7.5^2 + 0^2) = 7.5
+    assert_eq!(state.speed_km_s(), 7.5);
 }
 
 #[test]
@@ -106,6 +132,11 @@ fn test_vec3_debug_clone_copy() {
 #[test]
 fn test_mu_earth_constant() {
     assert_eq!(MU_EARTH, 398600.4418);
+}
+
+#[test]
+fn test_earth_radius_constant() {
+    assert_eq!(EARTH_RADIUS_KM, 6371.0);
 }
 
 // **Compliance Note**

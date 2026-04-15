@@ -2,6 +2,7 @@
 // This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
 
 use super::Vec3;
+use super::EARTH_RADIUS_KM;
 
 /// Represents the instantaneous Cartesian state of an orbiting object.
 ///
@@ -31,14 +32,32 @@ impl OrbitState {
     }
 
     /// Returns the position as a `Vec3`.
-    pub fn get_position(&self) -> Vec3 {
+    pub fn position(&self) -> Vec3 {
         Vec3::new(self.x, self.y, self.z)
     }
 
     /// Returns the velocity as a `Vec3`.
-    pub fn get_velocity(&self) -> Vec3 {
+    pub fn velocity(&self) -> Vec3 {
         Vec3::new(self.vx, self.vy, self.vz)
     }
+
+    /// Returns the altitude above the Earth's mean radius in kilometers (km).
+    pub fn altitude_km(&self) -> f64 {
+        let r = self.position().magnitude();
+        r - EARTH_RADIUS_KM // Earth radius in km
+    }
+
+    /// Returns the speed (magnitude of the velocity vector) in kilometers per second (km/s).
+    pub fn speed_km_s(&self) -> f64 {
+        self.velocity().magnitude()
+    }
+
+    /// Returns the distance from the center of the Earth to the orbiting object
+    /// in kilometers (km).
+    pub fn distance_km(&self) -> f64 {
+        self.position().magnitude()
+    }
+
 }
 
 // **Compliance Note**
