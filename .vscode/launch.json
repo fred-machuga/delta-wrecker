@@ -1,0 +1,34 @@
+﻿{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug Tests",
+            "type": "python",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "game/tests"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/game"
+        },
+        {
+            "name": "Rust: Debug Tests (CodeLLDB)",
+            "type": "lldb",
+            "request": "launch",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--manifest-path=engine/Cargo.toml"
+                ],
+                "filter": {
+                    "name": "delta_wrecker",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}/engine"
+        }
+    ]
+}

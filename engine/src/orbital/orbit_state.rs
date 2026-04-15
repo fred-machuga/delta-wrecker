@@ -47,7 +47,7 @@ impl OrbitState {
     }
 
     /// Returns the speed (magnitude of the velocity vector) in kilometers per second (km/s).
-    pub fn speed_km_s(&self) -> f64 {
+    pub fn speed_kms(&self) -> f64 {
         self.velocity().magnitude()
     }
 
