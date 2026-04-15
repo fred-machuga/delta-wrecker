@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>DeltaWrecker.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="NUnit" Version="4.1.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="NUnit.Analyzers" Version="4.1.0" />
+  </ItemGroup>
+
+  <!-- Reference the game scripts directly (excluding Godot Node types) -->
+  <ItemGroup>
+    <Compile Include="../scripts/orbital/OrbitalConstants.cs" />
+    <Compile Include="../scripts/orbital/Vec3.cs" />
+    <Compile Include="../scripts/orbital/OrbitState.cs" />
+    <Compile Include="../scripts/orbital/KeplerianElements.cs" />
+    <Compile Include="../scripts/orbital/Propagator.cs" />
+  </ItemGroup>
+</Project>
