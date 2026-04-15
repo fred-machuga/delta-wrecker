@@ -43,8 +43,7 @@ impl OrbitState {
 
     /// Returns the altitude above the Earth's mean radius in kilometers (km).
     pub fn altitude_km(&self) -> f64 {
-        let r = self.position().magnitude();
-        r - EARTH_RADIUS_KM // Earth radius in km
+        self.distance_km() - EARTH_RADIUS_KM // Earth radius in km
     }
 
     /// Returns the speed (magnitude of the velocity vector) in kilometers per second (km/s).
