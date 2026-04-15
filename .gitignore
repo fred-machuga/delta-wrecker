@@ -34,3 +34,6 @@ venv.bak/
 
 # uv
 uv.lock
+
+# Temporary files
+temp/
