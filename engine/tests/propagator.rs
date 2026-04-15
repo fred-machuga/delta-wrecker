@@ -183,7 +183,7 @@ fn test_altitude_stability_over_multiple_steps() {
     for _ in 0..100 {
         state = propagate(&state, dt);
         let alt = state.altitude_km();
-        assert!((alt - initial_alt).abs() < 0.01); // Very tight tolerance for stability
+        assert!((alt - initial_alt).abs() < 0.001); // Very tight tolerance for stability
     }
 }
 

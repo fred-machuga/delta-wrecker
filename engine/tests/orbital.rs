@@ -59,7 +59,7 @@ fn test_orbit_state_derived_metrics() {
     assert_eq!(state.altitude_km(), 629.0);
     
     // speed = sqrt(0^2 + 7.5^2 + 0^2) = 7.5
-    assert_eq!(state.speed_km_s(), 7.5);
+    assert_eq!(state.speed_kms(), 7.5);
 }
 
 #[test]

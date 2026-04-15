@@ -12,9 +12,6 @@ fn add_numbers(a: i32, b: i32) -> PyResult<i32> {
 /// A function that returns a greeting from Rust.
 #[pyfunction]
 fn hello_from_rust() -> PyResult<String> {
-
-// TODO-Coder: Expose propagate_circular to Python and write Rust-Python interop test
-
     Ok("Hello from Rust!".to_string())
 }
 

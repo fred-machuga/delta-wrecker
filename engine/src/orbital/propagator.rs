@@ -17,7 +17,7 @@ pub fn propagate(state: &OrbitState, dt_s: f64) -> OrbitState {
     // - Frame-rate independent
     
     let r = state.distance_km(); // distance from center of Earth to the orbiting body
-    let v: f64 = state.speed_km_s(); // speed of the orbiting body in km/s
+    let v: f64 = state.speed_kms(); // speed of the orbiting body in km/s
     let omega = v / r; // angular velocity of the orbiting body in rad/s
     let theta = omega * dt_s; // number of radians the spacecraft moves along its circular orbit over dt_s seconds
     let cos_theta = theta.cos(); 
