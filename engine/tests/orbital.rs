@@ -1,7 +1,7 @@
 // **Compliance Note**
 // This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
 
-use delta_wrecker::orbital::{OrbitState, KeplerianElements, Vec3};
+use delta_wrecker::orbital::{OrbitState, KeplerianElements, Vec3, MU_EARTH};
 
 #[test]
 fn test_vec3_creation() {
@@ -71,8 +71,25 @@ fn test_keplerian_elements_debug_clone_copy() {
 
 #[test]
 fn test_near_circular_validation() {
-    // TODO-Fred: Implement unit tests for checking near-circular (e < 0.05) orbit scenarios
-    // Ensure 100% branch coverage for this logic.
+    // Default is None, which implies e = 0.0 (perfectly circular)
+    let mut elements = KeplerianElements::new(7000.0);
+    assert!(elements.is_near_circular());
+
+    // Explicitly 0.0
+    elements.eccentricity = Some(0.0);
+    assert!(elements.is_near_circular());
+
+    // Near circular (e.g. 0.02)
+    elements.eccentricity = Some(0.02);
+    assert!(elements.is_near_circular());
+
+    // Right on the boundary 0.05 is NOT strictly less than 0.05
+    elements.eccentricity = Some(0.05);
+    assert!(!elements.is_near_circular());
+
+    // Highly elliptical
+    elements.eccentricity = Some(0.5);
+    assert!(!elements.is_near_circular());
 }
 
 #[test]
@@ -84,6 +101,11 @@ fn test_vec3_debug_clone_copy() {
     assert_eq!(v1, v2);
     assert_eq!(v1, v3);
     assert_eq!(v2, v3);
+}
+
+#[test]
+fn test_mu_earth_constant() {
+    assert_eq!(MU_EARTH, 398600.4418);
 }
 
 // **Compliance Note**
