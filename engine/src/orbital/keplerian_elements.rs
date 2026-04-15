@@ -48,7 +48,7 @@ impl KeplerianElements {
         }
     }
 
-    /// Validates that the orbit is near-circular (e < 0.05).
+    /// Returns true if this orbit is near-circular (eccentricity < 0.05).
     pub fn is_near_circular(&self) -> bool {
         self.eccentricity.unwrap_or(0.0) < 0.05
     }
