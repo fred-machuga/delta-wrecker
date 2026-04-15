@@ -1,6 +1,6 @@
 ---
 description: "Use when you need to create or manage Milestones, Epics, Stories, or move issues on the project board."
-tools: [execute/testFailure, execute/getTerminalOutput, execute/killTerminal, execute/sendToTerminal, execute/runInTerminal, agent, github.vscode-pull-request-github/issue_fetch, github.vscode-pull-request-github/labels_fetch, github.vscode-pull-request-github/doSearch, github.vscode-pull-request-github/pullRequestStatusChecks]
+tools: [execute/testFailure, execute/getTerminalOutput, execute/killTerminal, execute/sendToTerminal, execute/runInTerminal, read, agent, github.vscode-pull-request-github/issue_fetch, github.vscode-pull-request-github/labels_fetch, github.vscode-pull-request-github/doSearch, github.vscode-pull-request-github/pullRequestStatusChecks]
 ---
 
 **Compliance Note**  
