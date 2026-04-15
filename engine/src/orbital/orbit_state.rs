@@ -2,11 +2,13 @@
 // This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
 
 use super::Vec3;
+use super::EARTH_RADIUS_KM;
 
-/// Represents the instantaneous state of an orbiting object in Cartesian coordinates.
+/// Represents the instantaneous Cartesian state of an orbiting object.
 ///
-/// This struct contains the position and velocity components of an object at a specific
-/// point in time, typically used for numerical integration and state propagation.
+/// For Sprint 1 this is the minimal 3D position + velocity state used by the
+/// propagator. It is intentionally simple (no time stamp yet) so we can focus
+/// on clean data structures before adding propagation logic.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct OrbitState {
     /// X position component in kilometers (km)
@@ -24,52 +26,37 @@ pub struct OrbitState {
 }
 
 impl OrbitState {
-    /// Creates a new OrbitState with the given position and velocity components.
-    ///
-    /// # Arguments
-    ///
-    /// * `x`, `y`, `z` - Position components in km
-    /// * `vx`, `vy`, `vz` - Velocity components in km/s
-    ///
-    /// # Example
-    ///
-    /// ```
-    /// use delta_wrecker::orbital::OrbitState;
-    /// let state = OrbitState::new(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0);
-    /// assert_eq!(state.x, 7000.0);
-    /// assert_eq!(state.vy, 7.5);
-    /// ```
+    /// Creates a new `OrbitState` with the given position and velocity.
     pub fn new(x: f64, y: f64, z: f64, vx: f64, vy: f64, vz: f64) -> Self {
         OrbitState { x, y, z, vx, vy, vz }
     }
 
-    /// Returns the position as a Vec3.
-    ///
-    /// # Example
-    ///
-    /// ```
-    /// use delta_wrecker::orbital::{OrbitState, Vec3};
-    /// let state = OrbitState::new(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0);
-    /// let pos = state.get_position();
-    /// assert_eq!(pos, Vec3::new(7000.0, 0.0, 0.0));
-    /// ```
-    pub fn get_position(&self) -> Vec3 {
+    /// Returns the position as a `Vec3`.
+    pub fn position(&self) -> Vec3 {
         Vec3::new(self.x, self.y, self.z)
     }
 
-    /// Returns the velocity as a Vec3.
-    ///
-    /// # Example
-    ///
-    /// ```
-    /// use delta_wrecker::orbital::{OrbitState, Vec3};
-    /// let state = OrbitState::new(7000.0, 0.0, 0.0, 0.0, 7.5, 0.0);
-    /// let vel = state.get_velocity();
-    /// assert_eq!(vel, Vec3::new(0.0, 7.5, 0.0));
-    /// ```
-    pub fn get_velocity(&self) -> Vec3 {
+    /// Returns the velocity as a `Vec3`.
+    pub fn velocity(&self) -> Vec3 {
         Vec3::new(self.vx, self.vy, self.vz)
     }
+
+    /// Returns the altitude above the Earth's mean radius in kilometers (km).
+    pub fn altitude_km(&self) -> f64 {
+        self.distance_km() - EARTH_RADIUS_KM // Earth radius in km
+    }
+
+    /// Returns the speed (magnitude of the velocity vector) in kilometers per second (km/s).
+    pub fn speed_km_s(&self) -> f64 {
+        self.velocity().magnitude()
+    }
+
+    /// Returns the distance from the center of the Earth to the orbiting object
+    /// in kilometers (km).
+    pub fn distance_km(&self) -> f64 {
+        self.position().magnitude()
+    }
+
 }
 
 // **Compliance Note**

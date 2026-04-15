@@ -1,21 +1,11 @@
 // **Compliance Note**
 // This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
 
-//! # Orbital Mechanics Data Structures
-//!
-//! This module defines the core data structures for representing orbital states
-//! and Keplerian orbital elements used in orbital mechanics calculations.
+/// Standard gravitational parameter for Earth (in km^3 / s^2)
+pub const MU_EARTH: f64 = 398600.4418;
 
-pub mod orbit_state;
-pub mod keplerian_elements;
-pub mod vec3;
-pub mod constants;
-
-// Re-export the main types for convenience
-pub use orbit_state::OrbitState;
-pub use keplerian_elements::KeplerianElements;
-pub use vec3::Vec3;
-pub use constants::*;
+/// Mean radius of the Earth in kilometers (km)
+pub const EARTH_RADIUS_KM: f64 = 6371.0;
 
 // **Compliance Note**
 // This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
