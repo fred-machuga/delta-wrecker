@@ -3,26 +3,25 @@ This project is based entirely on publicly available academic information and ge
 
 # Requirements
 
-The Delta Wrecker project has the following mandatory requirements. These requirements are measurable and will be used to determine project completion.
-
 ### Technical Requirements
-
-1. The Rust orbital mechanics library **must** provide accurate, bidirectional conversion between Cartesian state vectors (position and velocity) and Keplerian orbital elements (semi-major axis, eccentricity, inclination, etc.).
-2. The game **must** maintain a stable 60 FPS during normal gameplay in Phase 1.
-3. The project **must** enforce a strict architectural separation between the reusable Rust orbital math library and the Python game/UI layer.
-4. All core orbital math functions **must** be covered by unit tests that validate results against known reference solutions from standard astrodynamics literature.
-5. The game **must** implement a complete, end-to-end gameplay loop consisting of target acquisition, orbital intercept, grappling, and towing under realistic mass and thrust constraints.
-6. The project **must** include a working save/load system so player progress is preserved between sessions.
-7. The entire codebase **must** build through a standardized Rust-to-Python interoperability pipeline (e.g. `maturin develop`), where the Python interpreter runs the game loop while offloading math calculation to a `cdylib` compiled from the Rust `src` folder.
+1. The Rust orbital math library must provide accurate propagation for circular, eccentric, and inclined orbits.
+2. The game must run smoothly in Godot 4 (C#) at a stable frame rate.
+3. The Rust engine must be cleanly integrated with Godot via local UDP sockets.
+4. All core orbital math functions must be covered by comprehensive unit tests.
+5. The project must maintain a clear separation between the reusable Rust library and the Godot client.
+6. Ship upgrades must unlock new capabilities (larger burns, higher mass limits, inclination changes, etc.).
+7. The game must support multiple camera views (top-down, side/tilted, and 3D vehicle-follow).
+8. Each phase must end with a releasable demo that demonstrates both new orbital math and new gameplay/visual features.
 
 ### Learning Requirements
+1. I must personally implement a significant portion of the orbital math.
+2. The Rust library must be written with clean, reusable APIs and strong functional programming patterns.
+3. Progression must be upgrade-driven: new capabilities are unlocked through ship upgrades purchased with money earned from salvage jobs.
+4. Placeholder animations (grappling and delivery) must be used until full mini-games are implemented in later phases.
 
-8. The developer **must** personally implement a significant portion of the orbital math (including propagation, burn calculations, and Kepler’s equation) to ensure deep learning of both Rust and orbital mechanics.
-9. The orbital mechanics library **must** be written with clean, well-documented, reusable APIs so that it can be extracted and used in future independent projects.
-
-### Project Requirements
-
-10. The project **must** be structured in three progressive phases with increasing orbital complexity (near-circular → eccentric → inclined) as defined in the roadmap.
+### Future Considerations
+- The project is intentionally open-ended and may include additional phases beyond the initial five.
+- 3D features and advanced mechanics (such as full RPO or burn optimization) will be introduced as capabilities are unlocked through upgrades.
 
 **Compliance Note**  
 This project is based entirely on publicly available academic information and general knowledge of orbital mechanics. It contains no restricted, proprietary, or export-controlled information of any kind. This is a personal learning project only.
