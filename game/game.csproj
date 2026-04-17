@@ -1,0 +1,20 @@
+<Project Sdk="Godot.NET.Sdk/4.6.2">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" PrivateAssets="all" />
+    <PackageReference Include="xunit" Version="2.4.2" PrivateAssets="all" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" PrivateAssets="all" />
+    <PackageReference Include="coverlet.collector" Version="3.2.0" PrivateAssets="all" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <!-- Include test sources only in Debug to avoid shipping them in Release builds -->
+  <!-- Tests live in the Tests/ folder. The SDK already includes Compile items by default, so remove
+       the test files from non-Debug builds to avoid shipping them. -->
+  <ItemGroup Condition="'$(Configuration)'!='Debug'">
+    <Compile Remove="Tests\\**\\*.cs" />
+  </ItemGroup>
+</Project>
