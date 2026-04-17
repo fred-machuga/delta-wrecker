@@ -3,12 +3,30 @@ using System;
 
 public partial class Main : Node3D
 {
-    // Scale: 1 Godot unit = 1 km
     private const float EarthRadiusKm = 6371.0f;
-    private const float OrbitRadiusKm = 6771.0f; // 400km altitude LEO
+    private const float OrbitRadiusKm = 6771.0f;
+
+    private MeshInstance3D _satellite;
+    private float _time = 0;
 
     public override void _Ready()
     {
-        // Nodes are now loaded from Main.tscn
+        _satellite = GetNode<MeshInstance3D>("Satellite");
+        GD.Print("Main Ready! Satellite loaded: ", _satellite != null);
+    }
+
+    public override void _Process(double delta)
+    {
+        _time += (float)delta;
+        float speed = 5.0f; 
+        float angle = _time * speed;
+        
+        float x = Mathf.Cos(angle) * OrbitRadiusKm;
+        float z = Mathf.Sin(angle) * OrbitRadiusKm;
+        
+        if (_satellite != null)
+        {
+            _satellite.Position = new Vector3(x, 0, z);
+        }
     }
 }

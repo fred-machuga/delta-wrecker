@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://cx6r080xxx"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_xxx"]
-[ext_resource type="Texture2D" path="res://assets/earth.png" id="2_earth"]
-[ext_resource type="Texture2D" path="res://assets/starmap.png" id="3_starmap"]
+[ext_resource type="Texture2D" path="res://assets/earth.jpg" id="2_earth"]
+[ext_resource type="Texture2D" path="res://assets/starmap.jpg" id="3_starmap"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_starmap"]
 panorama = ExtResource("3_starmap")
@@ -21,8 +21,8 @@ albedo_texture = ExtResource("2_earth")
 
 [sub_resource type="SphereMesh" id="SphereMesh_earth"]
 material = SubResource("StandardMaterial3D_earth")
-radius = 6371.0
-height = 12742.0
+radius = 4778.25
+height = 9556.5
 radial_segments = 64
 rings = 32
 
@@ -52,8 +52,6 @@ script = ExtResource("1_xxx")
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20000, 0)
-projection = 1
-size = 25000.0
 far = 50000.0
 
 [node name="Earth" type="MeshInstance3D" parent="."]
