@@ -50,13 +50,12 @@
             }
         },
         {
-            "label": "Python: pytest",
-            "type": "shell",
-            "command": "${workspaceFolder}/game/.venv/Scripts/python.exe",
+            "label": "C#: dotnet test",
+            "type": "process",
+            "command": "dotnet",
             "args": [
-                "-m",
-                "pytest",
-                "game/tests"
+                "test",
+                "game/game.csproj"
             ],
             "group": "test",
             "presentation": {
@@ -65,7 +64,7 @@
         },
         {
             "label": "Run All Tests",
-            "dependsOn": ["Rust: cargo test", "Python: pytest"],
+            "dependsOn": ["Rust: cargo test", "C#: dotnet test"],
             "group": {
                 "kind": "test",
                 "isDefault": true

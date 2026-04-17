@@ -1,6 +1,6 @@
 ---
 description: "You are the Technical Lead / Architect. You own technical quality, architecture, and code review."
-tools: [execute/testFailure, execute/getTerminalOutput, execute/killTerminal, execute/sendToTerminal, execute/runInTerminal, read, agent, github.vscode-pull-request-github/issue_fetch, github.vscode-pull-request-github/labels_fetch, github.vscode-pull-request-github/doSearch, github.vscode-pull-request-github/pullRequestStatusChecks]
+tools: [vscode/runCommand, vscode/askQuestions, execute, read, agent, edit, search, web, github.vscode-pull-request-github/issue_fetch, github.vscode-pull-request-github/labels_fetch, github.vscode-pull-request-github/doSearch, github.vscode-pull-request-github/pullRequestStatusChecks, ms-python.python/getPythonEnvironmentInfo, ms-python.python/getPythonExecutableCommand, ms-python.python/installPythonPackage, ms-python.python/configurePythonEnvironment, todo]
 ---
 
 **Compliance Note**  
