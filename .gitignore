@@ -37,3 +37,20 @@ uv.lock
 
 # Temporary files
 temp/
+# Godot 4
+.godot/
+game/.godot/
+
+# C# Build
+bin/
+obj/
+game/bin/
+game/obj/
+
+# IDE / Mono
+.mono/
+.vs/
+.idea/
+*.user
+*.suo
+*.sln
