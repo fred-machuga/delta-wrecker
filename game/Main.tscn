@@ -1,0 +1,70 @@
+[gd_scene load_steps=18 format=3 uid="uid://cx6r080xxx"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_xxx"]
+[ext_resource type="Texture2D" path="res://assets/earth.png" id="2_earth"]
+[ext_resource type="Texture2D" path="res://assets/starmap.png" id="3_starmap"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_starmap"]
+panorama = ExtResource("3_starmap")
+
+[sub_resource type="Sky" id="Sky_y45m9"]
+sky_material = SubResource("PanoramaSkyMaterial_starmap")
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 2
+background_color = Color(0.0196078, 0.0196078, 0.0509804, 1)
+sky = SubResource("Sky_y45m9")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_earth"]
+shading_mode = 0
+albedo_texture = ExtResource("2_earth")
+
+[sub_resource type="SphereMesh" id="SphereMesh_earth"]
+material = SubResource("StandardMaterial3D_earth")
+radius = 6371.0
+height = 12742.0
+radial_segments = 64
+rings = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sat"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sat"]
+material = SubResource("StandardMaterial3D_sat")
+radius = 200.0
+height = 400.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orbit"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.3)
+
+[sub_resource type="TorusMesh" id="TorusMesh_orbit"]
+material = SubResource("StandardMaterial3D_orbit")
+inner_radius = 6751.0
+outer_radius = 6791.0
+rings = 64
+tube_segments = 8
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_xxx")
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20000, 0)
+projection = 1
+size = 25000.0
+far = 50000.0
+
+[node name="Earth" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_earth")
+
+[node name="Satellite" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6771, 0, 0)
+mesh = SubResource("SphereMesh_sat")
+
+[node name="ReferenceOrbit" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_orbit")
+
+[node name="SpaceEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
